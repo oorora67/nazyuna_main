@@ -1,1 +1,1 @@
-# amaochi_weather
+# nazyuna_weather
