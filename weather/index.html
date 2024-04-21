@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+  ラクガキ
+  こんなところまで見に来たあなたは、
+  もうなずなに養分を吸われてしまった
+  ゲソの民ということだね
+    By おおろら(@oorora67)🌿🪴
+-->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌿なじゅの天気予報🪴</title>
+  <link rel="icon" type="image/png" href="https://www.nazyuna.org/data/image/icon.png">
+  <link rel="stylesheet" href="https://www.nazyuna.org/data/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="text">
+            <p class="text_1">🌿なじゅの天気予報🪴</p>
+            <div class="url-text2" class="input-block">
+                <div class="select-block">
+                  <label>大区分：
+                    <select id="category-select-1">
+                      <option>選択してください</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="select-block">
+                  <label>中区分：
+                    <select id="category-select-2" disabled>
+                      <option>選択してください</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="select-block">
+                    <label>小区分：
+                      <select id="category-select-3" disabled>
+                        <option>選択してください</option>
+                      </select>
+                    </label>
+                </div>
+                <p class="url-text2"><br></p>
+                
+              </div>
+              <div class="url-text2"id="send-button">🌿天気予報の取得🪴</div>
+              <p class="url-text2"><br></p>
+                <p class="url-text2"id="publishingOffice">　</p>
+                <p class="url-text2"id="reportDatetime">　</p>
+                <p class="url-text2"id="targetArea">　</p>
+                <p class="url-text2"id="today">　</p>
+                <p class="url-text2"id="tomorrow">　</p>
+                <p class="url-text2"id="dayAfterTomorrow">　</p>
+                <p class="url-text2"><br></p>
+            <div class="button-text"id="button">SOUND</div>
+            <p class="url-text2"><br></p>
+            <div class="seting">
+                <div class="seting-text">🌿再生設定🪴</div>
+                <input type="checkbox" name="s1" id="i1" checked><label for="i1" class="checkbox-text">今日</label>
+                <input type="checkbox" name="s2" id="i2" checked><label for="i2" class="checkbox-text">明日</label>
+                <input type="checkbox" name="s3" id="i3" checked><label for="i3" class="checkbox-text">明後日</label>
+                <!--<input type="checkbox" name="s4" id="i4" checked><label for="i4" class="checkbox-text">イベント</label>-->
+                <div class="cb"></div>
+            </div>
+            <p class="url-text2"><br>🌿芹梨なずな🪴</p>
+            <div class="url-text2"id="url-button">🌿IRIAM🪴</div>
+            <div class="url-text2"id="url-button2">🌿Twitter🪴</div>
+            <p class="text_2"><br>このサイトの情報は気象庁の予報をもとに表示しています。</p>
+        </div>
+    </div>
+    <script src="data/js/script.js"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X22T9H00HY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X22T9H00HY');
+</script>
+</body>
+</html>
