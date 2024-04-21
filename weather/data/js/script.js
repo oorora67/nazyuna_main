@@ -1,8 +1,11 @@
 document.getElementById("url-button").onclick = function () {
-    window.location.href = 'https://www.youtube.com/@amaochi';
+    window.location.href = 'https://web.iriam.app/s/user/cQDPn6fPph?uuid=090efdde';
 };
 document.getElementById("url-button2").onclick = function () {
-    window.location.href = 'https://twitter.com/amaochi_003';
+    window.location.href = 'https://twitter.com/1seri_nazuna7';
+};
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
 };
 let request_url = new URL(window.location.href);// URLを取得
 let params = request_url.searchParams;// URLSearchParamsオブジェクトを取得
@@ -228,9 +231,9 @@ fetch(url)
             if (cb1.checked) {
                 if (wc[area.weatherCodes[0]]) {
                     console.log('data/sound/' + area.weatherCodes[0] + '.mp3');
-                    playlist.push('data/sound/today.mp3');
+                    playlist.push('data/sound/today_' + getRandomInt(2) + '.mp3');
                     playlist.push('data/sound/' + area.weatherCodes[0] + '.mp3');
-                    playlist.push('data/sound/end.mp3');
+                    playlist.push('data/sound/end_' + getRandomInt(5) + '.mp3');
                 } else {
                     console.log("コードが存在しません")
                 }
@@ -238,9 +241,9 @@ fetch(url)
             if (cb2.checked) {
                 if (wc[area.weatherCodes[1]]) {
                     console.log('data/sound/' + area.weatherCodes[1] + '.mp3');
-                    playlist.push('data/sound/tomorrow.mp3');
+                    playlist.push('data/sound/tomorrow_' + getRandomInt(2) + '.mp3');
                     playlist.push('data/sound/' + area.weatherCodes[1] + '.mp3');
-                    playlist.push('data/sound/end.mp3');
+                    playlist.push('data/sound/end_' + getRandomInt(5) + '.mp3');
                 } else {
                     console.log("コードが存在しません")
                 }
@@ -248,9 +251,9 @@ fetch(url)
             if (cb3.checked) {
                 if (wc[area.weatherCodes[2]]) {
                     console.log('data/sound/' + area.weatherCodes[2] + '.mp3');
-                    playlist.push('data/sound/dayAfterTomorrow.mp3');
+                    playlist.push('data/sound/dayAfterTomorrow_' + getRandomInt(2) + '.mp3');
                     playlist.push('data/sound/' + area.weatherCodes[2] + '.mp3');
-                    playlist.push('data/sound/end.mp3');
+                    playlist.push('data/sound/end_' + getRandomInt(5) + '.mp3');
                 } else {
                     console.log("コードが存在しません")
                 }
