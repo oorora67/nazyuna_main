@@ -58,8 +58,8 @@ fetch('https://www.jma.go.jp/bosai/common/const/area.json')
         //console.log(area_json.class15s[data].parent)
         let data15 = area_json.class15s[data].parent
         let data10 = area_json.class10s[area_json.class15s[data].parent].parent
-        let data_offices = area_json.offices[data10].children.indexOf(data15)-1
-        //console.log(area_json.offices[data10].children.indexOf(data15)-1)
+        let data_offices = area_json.offices[data10].children.indexOf(data15)
+        //console.log(area_json.offices[data10].children.indexOf(data15))
         gps_url.area = data10
         gps_url.area_no = data_offices
         const new_url = new URL(window.location.href);
