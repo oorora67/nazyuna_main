@@ -4,74 +4,8 @@ document.getElementById("url-button").onclick = function () {
 document.getElementById("url-button2").onclick = function () {
     window.location.href = 'https://twitter.com/1seri_nazuna7';
 };
-document.getElementById("send-button2").onclick = function () {
-    console.log(getGeoCord());
-};
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
-};
-function getGeoCord(){
-    navigator.geolocation.getCurrentPosition(success, error, options);
-    
-}
-const options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0,
-};
-const gps_url = {
-    area: 130000,
-    area_no: 0
-};
-function success(pos) {
-    const crd = pos.coords;
-    console.log("Your current position is:");
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-    console.log('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress?lat='+crd.latitude+'&lon='+crd.longitude);
-    fetch('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress?lat='+crd.latitude+'&lon='+crd.longitude)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (geocoder) {
-console.log(geocoder.results.muniCd);
-fetch('https://www.jma.go.jp/bosai/common/const/area.json')
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (area_json) {
-        let flog = 1;
-        let count = 0;
-        let data
-        while (flog) {
-            try {
-                data = area_json.class20s[geocoder.results.muniCd+( '00' + count ).slice( -2 )].parent
-                flog = 0;
-            } catch (error) {
-                console.log(error);
-                count= count+1;
-                flog = 1;
-            }
-        }
-        //console.log(data)
-        //console.log(area_json.class15s[data].parent)
-        let data15 = area_json.class15s[data].parent
-        let data10 = area_json.class10s[area_json.class15s[data].parent].parent
-        let data_offices = area_json.offices[data10].children.indexOf(data15)-1
-        //console.log(area_json.offices[data10].children.indexOf(data15)-1)
-        gps_url.area = data10
-        gps_url.area_no = data_offices
-        const new_url = new URL(window.location.href);
-        new_url.searchParams.set('area', gps_url.area)
-        new_url.searchParams.set('area_no', gps_url.area_no);
-        window.location.href = new_url;
-    })
-    })
-};
-function error(err) {
-    document.getElementById("gps_message").innerText = 'GPSの権限の許可がされていないか、情報の取得に失敗しました。'
-    console.warn(`ERROR(${err.code}): ${err.message}`);
 };
 let request_url = new URL(window.location.href);// URLを取得
 let params = request_url.searchParams;// URLSearchParamsオブジェクトを取得
@@ -79,8 +13,6 @@ let params = request_url.searchParams;// URLSearchParamsオブジェクトを取
 //console.log(params.get('id')); // 1
 let url = "https://www.jma.go.jp/bosai/forecast/data/forecast/" + params.get('area') + ".json";
 let area_no = params.get('area_no');
-let latitude
-let longitude
 if (area_no == null) { area_no = 0; };
 var wc = {
     100: '晴れ',
