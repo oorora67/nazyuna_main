@@ -10,6 +10,19 @@ document.getElementById("send-button2").onclick = function () {
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 };
+function getClosestNum(needle, haystack) {
+    return haystack.reduce((a, b) => {
+        let aDiff = Math.abs(a - needle);
+        let bDiff = Math.abs(b - needle);
+
+        if (aDiff == bDiff) {
+            // 大きい方 vs 小さいほう (> vs <) を指定する
+            return a > b ? a : b;
+        } else {
+            return bDiff < aDiff ? b : a;
+        }
+    });
+}
 function getGeoCord(){
     navigator.geolocation.getCurrentPosition(success, error, options);
     
@@ -44,20 +57,21 @@ fetch('https://www.jma.go.jp/bosai/common/const/area.json')
         let flog = 1;
         let count = 0;
         let data
-        while (flog) {
-            try {
-                data = area_json.class20s[geocoder.results.muniCd+( '00' + count ).slice( -2 )].parent
-                flog = 0;
-            } catch (error) {
-                console.log(error);
-                count= count+1;
-                flog = 1;
-            }
-        }
+        let datalist =  []
+        for (data_1 in area_json.class20s) {
+            //console.log(data);
+            datalist.push(data_1);
+        };
+        //console.log(datalist)
+
+        //console.log(getClosestNum(geocoder.results.muniCd+( '00' + count ).slice( -2 ),datalist))
+        data = getClosestNum(geocoder.results.muniCd+( '00' + count ).slice( -2 ),datalist)
         //console.log(data)
-        //console.log(area_json.class15s[data].parent)
-        let data15 = area_json.class15s[data].parent
-        let data10 = area_json.class10s[area_json.class15s[data].parent].parent
+        //console.log(data)
+        //console.log(area_json.class20s[data].parent)
+        let data20 = area_json.class20s[data].parent
+        let data15 = area_json.class15s[data20].parent
+        let data10 = area_json.class10s[data15].parent
         let data_offices = area_json.offices[data10].children.indexOf(data15)
         //console.log(area_json.offices[data10].children.indexOf(data15))
         gps_url.area = data10
