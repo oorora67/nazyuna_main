@@ -7,6 +7,32 @@ document.getElementById("url-button2").onclick = function () {
 document.getElementById("send-button2").onclick = function () {
     console.log(getGeoCord());
 };
+function getEvent_1() {
+    //現在時刻を取得するオブジェクトを作成
+    const now = new Date();
+
+    //Dateオブジェクトから｢時｣｢分｣｢秒｣の数値を取り出す
+    const hour = now.getHours();
+    if (4 >= hour && hour >= 1) {
+        return true;
+    } else {
+        return false;
+    }
+};
+function getEvent_2() {
+    //現在時刻を取得するオブジェクトを作成
+    const now = new Date();
+
+    //Dateオブジェクトから｢時｣｢分｣｢秒｣の数値を取り出す
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+    const second = now.getSeconds();
+    if ((hour == 22) || (minute == 22) || (second == 22)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 };
@@ -23,9 +49,9 @@ function getClosestNum(needle, haystack) {
         }
     });
 }
-function getGeoCord(){
+function getGeoCord() {
     navigator.geolocation.getCurrentPosition(success, error, options);
-    
+
 }
 const options = {
     enableHighAccuracy: true,
@@ -42,46 +68,46 @@ function success(pos) {
     console.log(`Latitude : ${crd.latitude}`);
     console.log(`Longitude: ${crd.longitude}`);
     console.log(`More or less ${crd.accuracy} meters.`);
-    console.log('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress?lat='+crd.latitude+'&lon='+crd.longitude);
-    fetch('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress?lat='+crd.latitude+'&lon='+crd.longitude)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (geocoder) {
-console.log(geocoder.results.muniCd);
-fetch('https://www.jma.go.jp/bosai/common/const/area.json')
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (area_json) {
-        let flog = 1;
-        let count = 0;
-        let data
-        let datalist =  []
-        for (data_1 in area_json.class20s) {
-            //console.log(data);
-            datalist.push(data_1);
-        };
-        //console.log(datalist)
+    console.log('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress?lat=' + crd.latitude + '&lon=' + crd.longitude);
+    fetch('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress?lat=' + crd.latitude + '&lon=' + crd.longitude)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (geocoder) {
+            console.log(geocoder.results.muniCd);
+            fetch('https://www.jma.go.jp/bosai/common/const/area.json')
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (area_json) {
+                    let flog = 1;
+                    let count = 0;
+                    let data
+                    let datalist = []
+                    for (data_1 in area_json.class20s) {
+                        //console.log(data);
+                        datalist.push(data_1);
+                    };
+                    //console.log(datalist)
 
-        //console.log(getClosestNum(geocoder.results.muniCd+( '00' + count ).slice( -2 ),datalist))
-        data = getClosestNum(geocoder.results.muniCd+( '00' + count ).slice( -2 ),datalist)
-        //console.log(data)
-        //console.log(data)
-        //console.log(area_json.class20s[data].parent)
-        let data20 = area_json.class20s[data].parent
-        let data15 = area_json.class15s[data20].parent
-        let data10 = area_json.class10s[data15].parent
-        let data_offices = area_json.offices[data10].children.indexOf(data15)
-        //console.log(area_json.offices[data10].children.indexOf(data15))
-        gps_url.area = data10
-        gps_url.area_no = data_offices
-        const new_url = new URL(window.location.href);
-        new_url.searchParams.set('area', gps_url.area)
-        new_url.searchParams.set('area_no', gps_url.area_no);
-        window.location.href = new_url;
-    })
-    })
+                    //console.log(getClosestNum(geocoder.results.muniCd+( '00' + count ).slice( -2 ),datalist))
+                    data = getClosestNum(geocoder.results.muniCd + ('00' + count).slice(-2), datalist)
+                    //console.log(data)
+                    //console.log(data)
+                    //console.log(area_json.class20s[data].parent)
+                    let data20 = area_json.class20s[data].parent
+                    let data15 = area_json.class15s[data20].parent
+                    let data10 = area_json.class10s[data15].parent
+                    let data_offices = area_json.offices[data10].children.indexOf(data15)
+                    //console.log(area_json.offices[data10].children.indexOf(data15))
+                    gps_url.area = data10
+                    gps_url.area_no = data_offices
+                    const new_url = new URL(window.location.href);
+                    new_url.searchParams.set('area', gps_url.area)
+                    new_url.searchParams.set('area_no', gps_url.area_no);
+                    window.location.href = new_url;
+                })
+        })
 };
 function error(err) {
     document.getElementById("gps_message").innerText = 'GPSの権限の許可がされていないか、情報の取得に失敗しました。'
@@ -275,6 +301,7 @@ fetch(url)
     .then(function (weather) {
         // 特定の地域(今回は東京)だけ選択して変数に詰め直す
         var area = weather[0].timeSeries[0].areas[area_no];
+        var area_pops = weather[0].timeSeries[1].areas[area_no];
         // 発表者と報告日時の情報を画面に書き出す
         document.getElementById("publishingOffice").innerText = '発表者:' + weather[0].publishingOffice;
         document.getElementById("reportDatetime").innerText = '発表日時:' + weather[0].reportDatetime.replace('+09:00', '').replace('T', ' ');
@@ -312,45 +339,47 @@ fetch(url)
 
             if (cb1.checked) {
                 if (wc[area.weatherCodes[0]]) {
-                    console.log('data/sound/' + area.weatherCodes[0] + '.mp3');
                     playlist.push('data/sound/today_' + getRandomInt(2) + '.mp3');
                     playlist.push('data/sound/' + area.weatherCodes[0] + '.mp3');
-                    playlist.push('data/sound/end_' + getRandomInt(5) + '.mp3');
+                    playlist.push('data/sound/end_' + getRandomInt(6) + '.mp3');
                 } else {
                     console.log("コードが存在しません")
                 }
             };
             if (cb2.checked) {
                 if (wc[area.weatherCodes[1]]) {
-                    console.log('data/sound/' + area.weatherCodes[1] + '.mp3');
                     playlist.push('data/sound/tomorrow_' + getRandomInt(2) + '.mp3');
                     playlist.push('data/sound/' + area.weatherCodes[1] + '.mp3');
-                    playlist.push('data/sound/end_' + getRandomInt(5) + '.mp3');
+                    playlist.push('data/sound/end_' + getRandomInt(6) + '.mp3');
                 } else {
                     console.log("コードが存在しません")
                 }
             };
             if (cb3.checked) {
                 if (wc[area.weatherCodes[2]]) {
-                    console.log('data/sound/' + area.weatherCodes[2] + '.mp3');
                     playlist.push('data/sound/dayAfterTomorrow_' + getRandomInt(2) + '.mp3');
                     playlist.push('data/sound/' + area.weatherCodes[2] + '.mp3');
-                    playlist.push('data/sound/end_' + getRandomInt(5) + '.mp3');
+                    playlist.push('data/sound/end_' + getRandomInt(6) + '.mp3');
                 } else {
                     console.log("コードが存在しません")
                 }
             };
-            /*
             if (cb4.checked) {
-                if (wc[area.weatherCodes[0]]) {
-                    console.log('data/sound/' + area.weatherCodes[0] + '.mp3')
-                    //playlist.push('data/sound/' + area.weatherCodes[0] + '.mp3');
+                if (area_pops.pops[0] >= 40 || area_pops.pops[1] >= 40) {
+                    playlist.push('data/sound/event_0.mp3');
+                }
+                if (getEvent_1()) {
+                    playlist.push('data/sound/event_1.mp3');
+                } else if (getEvent_2()) {
+                    playlist.push('data/sound/event_2.mp3');
                 } else {
-                    //orangeというキーが存在しない場合の処理
-                    console.log("コードが存在しません")
+                    if (getRandomInt(25) == 0) {
+                        playlist.push('data/sound/event_n' + getRandomInt(6) + '.mp3');
+                    } else {
+                        playlist.push('data/sound/event_n0.mp3');
+                    }
                 }
             };
-            */
             var audio = document.createElement('audio');
             playlist.push('data/sound/blank.mp3');
             document.body.appendChild(audio);
