@@ -42,7 +42,7 @@
 
 [cm]
 [chara_part  name="nazuna_room"  eye=eye_mov_1 mouth=mouth_mov]
-[chara_show  name="nazuna_room" left="400" top="55"]
+[chara_show  name="nazuna_room" left="400" top="55" height="1000" width="465"]
 
 [fadeinbgm storage="新しい朝、風に乗って.mp3" time="3000" volume="30" ]
 [fadeinse storage="SE/スズメが鳴く朝.mp3" volume="10" time="1000"]
