@@ -47,7 +47,11 @@
     }
     sha256(tf.aikotoba).then(hash => tf.aikotoba_hash = String(hash))
 [endscript]
-
+現在あいことばは実装中です。[p]
+@layopt layer=message0 visible=false
+@layopt layer=fix visible=false
+@jump storage="title.ks"
+[s]
 入力:[emb exp="tf.aikotoba"][r]
 hash:[emb exp="tf.aikotoba_hash"][r]
 [iscript]
