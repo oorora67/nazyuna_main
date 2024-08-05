@@ -227,6 +227,7 @@
 ~End~[p]
 [vostop]
 [chara_hide_all time=2000 wait=true]
+[fadeoutbgm time="2000"]
 @jump target=title_jamp
 [s]
 
