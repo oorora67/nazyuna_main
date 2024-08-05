@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Loading TyranoScript</title>
-
+        <link rel="SHORTCUT ICON" href="./data/image/icon.png" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
         <meta name="robots" content="noindex,nofollow" />
@@ -88,10 +88,166 @@
         <script src="./tyrano/libs/jsQR.js"></script>
         <script src="./tyrano/libs/anime.min.js"></script>
         <script src="./tyrano/libs/lz-string.min.js"></script>
-        
+
+
+        <style>
+            .loadingWrap {
+opacity: 1;
+color: #fff;
+position: absolute;
+background: #000000; /* 背景の色 */
+z-index: 9999; /* 9999にして何が何でも1番上に表示 */
+width: 100%; /* 幅と高さを100％にし全体を覆い尽くす */
+height: 100%;
+}
+
+.c-spinner {
+    width: 12vmax;
+    height: 12vmax;
+    position: absolute;
+    top:35%;
+    left:44%;
+  /*animation: 4s rotate infinite cubic-bezier(0.785, 0.135, 0.150, 0.860);*/
+}
+
+.c-spinner__leaf:before {
+  content:'';
+  display:block;
+  width: 5.5vmax;
+  height: 5.5vmax;
+  background: #00ff55aa;
+  opacity: 0.9;
+  margin: 2px;
+}
+
+.c-spinner__leaf {
+  position: absolute;
+  width: 100%; height: 100%;
+}
+
+.c-spinner__leaf:before {border-top-right-radius: 10px;border-bottom-left-radius: 10px;}
+
+.leaf--1 {
+  animation: 3s rotate1 infinite cubic-bezier(0.785, 0.135, 0.150, 0.860);
+}
+
+.leaf--2 {
+  animation: 3s  rotate2 infinite  cubic-bezier(0.785, 0.135, 0.150, 0.860);
+}
+
+.leaf--3 {
+  animation: 3s   rotate3 infinite cubic-bezier(0.785, 0.135, 0.150, 0.860);
+}
+
+.leaf--4 {
+  animation: 3s   rotate4 infinite cubic-bezier(0.785, 0.135, 0.150, 0.860);
+}
+
+
+.c-spinner {
+  animation: 3s rotate infinite linear;
+}
+
+
+@keyframes rotate {
+  0%  {transform: rotate(0)}
+  100%  {transform: rotate(360deg)}
+}
+
+@keyframes rotate2 {
+  0%  {transform: rotate(0)}
+  30%  {transform: rotate(270deg)}
+  70%  {transform: rotate(270deg)}
+  100%  {transform: rotate(360deg)}
+}
+
+@keyframes rotate3 {
+  0%  {transform: rotate(0)}
+  30%  {transform: rotate(180deg)}
+  70%  {transform: rotate(180deg)}
+  100%  {transform: rotate(360deg)}
+}
+
+@keyframes rotate4 {
+  0%  {transform: rotate(0)}
+  30% {transform: rotate(90deg)}
+  70% {transform: rotate(90deg)}
+  100%  {transform: rotate(360deg)}
+}
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    position: absolute;
+    top:70%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    --w:10ch;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 2.5vmax;
+    line-height: 1.6em;
+    letter-spacing: var(--w);
+    width: var(--w);
+    overflow: hidden;
+    white-space: nowrap;
+    color: #ffffff00;
+    text-shadow: 
+        calc( 0*var(--w)) 0 #ffffff,calc(-1*var(--w)) 0 #ffffff,calc(-2*var(--w)) 0 #ffffff,calc(-3*var(--w)) 0 #ffffff,calc(-4*var(--w)) 0 #ffffff, 
+        calc(-5*var(--w)) 0 #ffffff,calc(-6*var(--w)) 0 #ffffff,calc(-7*var(--w)) 0 #ffffff,calc(-8*var(--w)) 0 #ffffff,calc(-9*var(--w)) 0 #ffffff;
+  animation: l20 3s infinite linear;
+}
+.loader:before {
+  content:"Loading...";
+}
+
+@keyframes l20 {
+  9.09% {text-shadow: 
+        calc( 0*var(--w)) -10px #ffffff,calc(-1*var(--w)) 0 #ffffff,calc(-2*var(--w)) 0 #ffffff,calc(-3*var(--w)) 0 #ffffff,calc(-4*var(--w)) 0 #ffffff, 
+        calc(-5*var(--w)) 0 #ffffff,calc(-6*var(--w)) 0 #ffffff,calc(-7*var(--w)) 0 #ffffff,calc(-8*var(--w)) 0 #ffffff,calc(-9*var(--w)) 0 #ffffff}
+  18.18% {text-shadow: 
+        calc( 0*var(--w)) 0 #ffffff,calc(-1*var(--w)) -10px #ffffff,calc(-2*var(--w)) 0 #ffffff,calc(-3*var(--w)) 0 #ffffff,calc(-4*var(--w)) 0 #ffffff, 
+        calc(-5*var(--w)) 0 #ffffff,calc(-6*var(--w)) 0 #ffffff,calc(-7*var(--w)) 0 #ffffff,calc(-8*var(--w)) 0 #ffffff,calc(-9*var(--w)) 0 #ffffff}
+  27.27% {text-shadow: 
+        calc( 0*var(--w)) 0 #ffffff,calc(-1*var(--w)) 0 #ffffff,calc(-2*var(--w)) -10px #ffffff,calc(-3*var(--w)) 0 #ffffff,calc(-4*var(--w)) 0 #ffffff, 
+        calc(-5*var(--w)) 0 #ffffff,calc(-6*var(--w)) 0 #ffffff,calc(-7*var(--w)) 0 #ffffff,calc(-8*var(--w)) 0 #ffffff,calc(-9*var(--w)) 0 #ffffff}
+  36.36% {text-shadow: 
+        calc( 0*var(--w)) 0 #ffffff,calc(-1*var(--w)) 0 #ffffff,calc(-2*var(--w)) 0 #ffffff,calc(-3*var(--w)) -10px #ffffff,calc(-4*var(--w)) 0 #ffffff, 
+        calc(-5*var(--w)) 0 #ffffff,calc(-6*var(--w)) 0 #ffffff,calc(-7*var(--w)) 0 #ffffff,calc(-8*var(--w)) 0 #ffffff,calc(-9*var(--w)) 0 #ffffff}
+  45.45% {text-shadow: 
+        calc( 0*var(--w)) 0 #ffffff,calc(-1*var(--w)) 0 #ffffff,calc(-2*var(--w)) 0 #ffffff,calc(-3*var(--w)) 0 #ffffff,calc(-4*var(--w)) -10px #ffffff, 
+        calc(-5*var(--w)) 0 #ffffff,calc(-6*var(--w)) 0 #ffffff,calc(-7*var(--w)) 0 #ffffff,calc(-8*var(--w)) 0 #ffffff,calc(-9*var(--w)) 0 #ffffff}
+  54.54% {text-shadow: 
+        calc( 0*var(--w)) 0 #ffffff,calc(-1*var(--w)) 0 #ffffff,calc(-2*var(--w)) 0 #ffffff,calc(-3*var(--w)) 0 #ffffff,calc(-4*var(--w)) 0 #ffffff, 
+        calc(-5*var(--w)) -10px #ffffff,calc(-6*var(--w)) 0 #ffffff,calc(-7*var(--w)) 0 #ffffff,calc(-8*var(--w)) 0 #ffffff,calc(-9*var(--w)) 0 #ffffff}
+  63.63% {text-shadow: 
+        calc( 0*var(--w)) 0 #ffffff,calc(-1*var(--w)) 0 #ffffff,calc(-2*var(--w)) 0 #ffffff,calc(-3*var(--w)) 0 #ffffff,calc(-4*var(--w)) 0 #ffffff, 
+        calc(-5*var(--w)) 0 #ffffff,calc(-6*var(--w)) -10px #ffffff,calc(-7*var(--w)) 0 #ffffff,calc(-8*var(--w)) 0 #ffffff,calc(-9*var(--w)) 0 #ffffff}
+  72.72% {text-shadow: 
+        calc( 0*var(--w)) 0 #ffffff,calc(-1*var(--w)) 0 #ffffff,calc(-2*var(--w)) 0 #ffffff,calc(-3*var(--w)) 0 #ffffff,calc(-4*var(--w)) 0 #ffffff, 
+        calc(-5*var(--w)) 0 #ffffff,calc(-6*var(--w)) 0 #ffffff,calc(-7*var(--w)) -10px #ffffff,calc(-8*var(--w)) 0 #ffffff,calc(-9*var(--w)) 0 #ffffff}
+  81.81% {text-shadow: 
+        calc( 0*var(--w)) 0 #ffffff,calc(-1*var(--w)) 0 #ffffff,calc(-2*var(--w)) 0 #ffffff,calc(-3*var(--w)) 0 #ffffff,calc(-4*var(--w)) 0 #ffffff, 
+        calc(-5*var(--w)) 0 #ffffff,calc(-6*var(--w)) 0 #ffffff,calc(-7*var(--w)) 0 #ffffff,calc(-8*var(--w)) -10px #ffffff,calc(-9*var(--w)) 0 #ffffff}
+  90.90% {text-shadow: 
+        calc( 0*var(--w)) 0 #ffffff,calc(-1*var(--w)) 0 #ffffff,calc(-2*var(--w)) 0 #ffffff,calc(-3*var(--w)) 0 #ffffff,calc(-4*var(--w)) 0 #ffffff, 
+        calc(-5*var(--w)) 0 #ffffff,calc(-6*var(--w)) 0 #ffffff,calc(-7*var(--w)) 0 #ffffff,calc(-8*var(--w)) 0 #ffffff,calc(-9*var(--w)) -10px #ffffff}
+}
+            </style>
+
+
     </head>
 
     <body onselectstart="return false" onContextmenu="return false" ontouchmove="event.preventDefault()">
+        <div class="loadingWrap">
+        <div class="c-spinner">
+            <div class="c-spinner__leaf leaf--1"></div>
+            <div class="c-spinner__leaf leaf--2"></div>
+            <div class="c-spinner__leaf leaf--3"></div>
+            <div class="c-spinner__leaf leaf--4"></div>
+        </div>
+        <div class="loader"></div>
+        </div>
         <div id="tyrano_base" class="tyrano_base" style="overflow: hidden" unselectable="on" ondragstart="return false"></div>
         <div id="vchat_base" class="vchat_base" style="overflow: hidden" unselectable="on" ondragstart="return false"></div>
 
