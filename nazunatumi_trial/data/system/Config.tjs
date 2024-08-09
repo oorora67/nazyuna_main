@@ -34,7 +34,7 @@
 ;configLeft=-1
 ;configTop=-1
 ;configThumbnail=true
-;configThumbnailQuality=middle
+;configThumbnailQuality=low
 ;configSaveSlotNum=5
 ;maxBackLogNum=50
 ;autoRecordLabel=false
