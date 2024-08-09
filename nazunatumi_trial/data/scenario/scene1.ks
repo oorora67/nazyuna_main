@@ -131,7 +131,6 @@
 どうぞ、めしあがれ。[p]
 #システム
 目玉焼きには・・・
-[cm]
 [glink color="ts16" x="440" y="150" width="400" size="24" text="醤油" target="*s002_001"]
 [glink color="ts16" x="440" y="230" width="400" size="24" text="塩" target="*s002_002"]
 [glink color="ts16" x="440" y="310" width="400" size="24" text="ソース" target="*s002_003"]
