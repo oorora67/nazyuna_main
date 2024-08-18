@@ -85,7 +85,7 @@
   }
 
   #contents {
-    width: 100%;
+    width: auto;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -96,10 +96,10 @@
   height: 100vh;    /* 画面高さいっぱい */
 }
 .first_view img {
-  object-fit: cover;/* 要素いっぱいに画像を表示（はみ出た部分は削除） */
-  height: 100%      /* 親要素の高さいっぱい */
+  object-fit: contain;/* 要素いっぱいに画像を表示（はみ出た部分は削除） */
+  height: 100vh;      /* 親要素の高さいっぱい */
 }
-  #clock {
+#clock {
     position: absolute;
     width: 35vh;
     height: 35vh;
@@ -108,6 +108,34 @@
     border: solid rgba(0, 0, 0, 0) 1px;
     border-radius: 50%;
   }
+@media screen and (max-width: 480px) {
+	/* 480px以下に適用されるCSS（スマホ用） */
+  #contents {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #98bec1;
+  }
+  .first_view {
+    width: 100vw;    /* 画面高さいっぱい */
+}
+.first_view img {
+  object-fit: contain;/* 要素いっぱいに画像を表示（はみ出た部分は削除） */
+  width: 100vw;      /* 親要素の高さいっぱい */
+}
+#clock {
+    position: absolute;
+    width: 35vw;
+    height: 35vw;
+    transform: translate(0%, 11%);
+    background-color: rgba(211, 211, 211, 0);
+    border: solid rgba(0, 0, 0, 0) 1px;
+    border-radius: 50%;
+  }
+}
+
 
   .hand {
     position: absolute;
@@ -132,7 +160,7 @@
 
   #hour-hand {
     width: 30%;
-    border-width: 4px;
+    border-width: 3px;
     transform: rotate(var(--hour-deg));
   }
   
