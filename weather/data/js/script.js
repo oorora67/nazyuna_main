@@ -53,6 +53,11 @@ function getGeoCord() {
     navigator.geolocation.getCurrentPosition(success, error, options);
 
 }
+function checkWeatherName(wcn, text) {
+    wctext = wc[wcn];
+    const regex = new RegExp('.*' + text + '.*');
+    return regex.test(wctext);
+};
 const options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -366,7 +371,16 @@ fetch(url)
             };
             if (cb4.checked) {
                 if (area_pops.pops[0] >= 40 || area_pops.pops[1] >= 40) {
-                    playlist.push('data/sound/event_0.mp3');
+                    playlist.push('data/sound/event_0_' + getRandomInt(3) + '.mp3');
+                }
+                if (checkWeatherName(area.weatherCodes[0], '雪')) {
+                    playlist.push('data/sound/event_3.mp3');
+                }
+                if (checkWeatherName(area.weatherCodes[0], '雷')) {
+                    playlist.push('data/sound/event_4.mp3');
+                }
+                if (area.weatherCodes[0] == 100) {
+                    playlist.push('data/sound/event_5_' + getRandomInt(2) + '.mp3');
                 }
                 if (getEvent_1()) {
                     playlist.push('data/sound/event_1.mp3');
