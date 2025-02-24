@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>芹梨なずな 1st Anniversary</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="polar-bear center hidden-until" id="polarBear">
+  <div class="scarf">
+    <div class="knot"></div>
+    <div class="trail t1">
+      <div class="trail-transform"></div>
+    </div>
+    <div class="trail t2">
+      <div class="trail-transform"></div>
+    </div>
+  </div>
+  <div class="head">
+    <div class="nose"></div>
+    <div class="eye"></div>
+    <div class="mouth"></div>
+    <div class="ear"></div>
+  </div>
+  <div class="front-left-leg"></div>
+  <div class="front-right-leg"></div>
+  <div class="back-left-leg"></div>
+  <div class="back-right-leg"></div>
+  <div class="tail"></div>
+  <div class="speech-bubble" style="top: -280px; left: 60%;" id="speechBubble">
+    ページを開き直してください。
+  </div>
+</div>
+<div class="hidden-comment" id="hiddenComment">
+  芹梨なずな<br>
+  1st Anniversary<br><br>
+  まだ秘密…<br><br>
+  2025/2/24 23:00<br>
+  まで待っててね…！<br>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var showTime = new Date("2025-02-24T15:30:00");
+    var now = new Date();
+    if (now >= showTime) {
+      document.getElementById("polarBear").classList.remove("hidden-until");
+      document.getElementById("hiddenComment").style.display = "none";
+      dec2text()
+    } else {
+      document.getElementById("hiddenComment").style.display = "block";
+      var timeUntilShow = showTime - now;
+      setTimeout(function() {
+        dec2text()
+        document.getElementById("polarBear").classList.remove("hidden-until");
+        document.getElementById("hiddenComment").style.display = "none";
+      }, timeUntilShow);
+    }
+
+    function decodeBase64Unicode(str) {
+      return decodeURIComponent(Array.prototype.map.call(atob(str), function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+    }
+    function dec2text() {
+      var encryptedText = "44Gq44GY44KF44G4PGJyPjxicj4K44Gq44GY44KF44GM56eB44Gu5a6244Gu44OX44Op44Oz44K/44O844GL44KJ55Sf44GI44Gf44CBPGJyPgrjgYLjga7ml6XjgYvjgonjgarjgZjjgoXjgajjga7mpb3jgZfjgYTmgJ3jgYTlh7rjgac8YnI+CuOBhOOBo+OBseOBhOOBruaXpeOAheOCkumBjuOBlOOBm+OBpuWsieOBl+OBi+OBo+OBn+OCiOOAgjxicj4K44GT44KM44GL44KJ44GuMeW5tOOCguOBquOBmOOCheOBqOayouWxseOBruaAneOBhOWHuuOCkjxicj4K5LiA57eS44Gr5Ym144KK44KI44KK6Imv44GEMeW5tOOBq+OBl+OBpuOBhOOBk+OBhuOBreOAgjxicj4K44Gq44GY44KF44CB5aSn5aW944GN44CCPGJyPgo8c3BhbiBjbGFzcz0idGV4dC13aGl0ZSI+5oSb44GX44Gm44KL44KIPC9zcGFuPjxicj4K44GK44GK44KN44KJIOOCiOOCigo=";
+      var decryptedText = decodeBase64Unicode(encryptedText);
+      var speechBubble = document.getElementById("speechBubble");
+      speechBubble.innerHTML = decryptedText;
+    }
+  });
+</script>
+
+</body>
+</html>

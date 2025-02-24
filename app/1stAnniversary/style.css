@@ -1,0 +1,327 @@
+body * {
+  position: absolute;
+}
+
+*:before,
+*:after {
+  content: "";
+  display: block;
+  position: absolute;
+}
+
+.center,
+.right,
+.left {
+  top: 50%;
+}
+
+.center {
+  left: 47%;
+}
+
+.left {
+  left: 18%;
+}
+
+.right {
+  right: 14%;
+}
+
+@media (max-width: 1000px) {
+  .left {
+    top: 30%;
+    left: 18%;
+  }
+
+  .right {
+    top: 26%;
+    right: 10%;
+  }
+
+  .center {
+    top: 60%;
+    left: 44%;
+  }
+}
+/*********************************************
+POLAR BEAR
+*********************************************/
+.polar-bear {
+  background: #ffffff;
+  width: 220px;
+  height: 110px;
+  border-radius: 60px 0 110px 0;
+  margin-top: -70px;
+  margin-left: -110px;
+}
+.polar-bear .scarf {
+  height: 74px;
+  width: 55px;
+  top: 0px;
+  left: 150px;
+  background: #000;
+  background: repeating-linear-gradient(-45deg, #ff5000, #ff5000 10px, #ffd000 10px, #ffd000 20px);
+  border-bottom-left-radius: 60px;
+}
+.polar-bear .scarf .knot {
+  z-index: 101;
+  height: 26px;
+  width: 26px;
+  background: repeating-linear-gradient(-45deg, #ff5000, #ff5000 10px, #ffd000 10px, #ffd000 20px);
+  border-radius: 100%;
+  bottom: -1px;
+  right: -10px;
+  transform: rotate(90deg);
+  box-shadow: -1px 3px 0px 0 rgba(0, 0, 0, 0.35);
+}
+.polar-bear .scarf .trail {
+  clip: rect(0px, 90px, 36px, 0px);
+  transform-origin: 100% 50% 0;
+  height: 36px;
+  width: 90px;
+}
+.polar-bear .scarf .trail .trail-transform {
+  height: 110px;
+  width: 110px;
+  left: -55px;
+  top: -37px;
+  background: repeating-linear-gradient(-130deg, #ff5000, #ff5000 8px, #ffd000 8px, #ffd000 16px);
+  transform: rotate(45deg) skew(-38deg, -38deg);
+  box-shadow: inset -8px 0px 0px 0 rgba(0, 0, 0, 0.2);
+}
+.polar-bear .scarf .t1 {
+  z-index: 100;
+  top: 45px;
+  left: -40px;
+  transform: rotate(-20deg);
+  -webkit-animation: scarf-trail-1 1.8s infinite;
+          animation: scarf-trail-1 1.8s infinite;
+}
+.polar-bear .scarf .t2 {
+  z-index: 99;
+  top: 45px;
+  left: -36px;
+  transform: rotate(-30deg);
+  -webkit-animation: scarf-trail-2 1.6s infinite;
+          animation: scarf-trail-2 1.6s infinite;
+}
+.polar-bear .head {
+  z-index: 102;
+  background: #ffffff;
+  width: 95px;
+  height: 50px;
+  right: -55px;
+  border-radius: 0 8px 45px 40px;
+  overflow: hidden;
+}
+.polar-bear .head .nose {
+  background: #222;
+  height: 13px;
+  width: 16px;
+  right: 0;
+  border-bottom-left-radius: 10px;
+}
+.polar-bear .head .eye {
+  border-top: 3px solid #000;
+  width: 16px;
+  height: 10px;
+  border-radius: 100%;
+  top: 8px;
+  right: 40px;
+}
+.polar-bear .head .mouth {
+  border-bottom: 2px solid #000;
+  height: 20px;
+  width: 50px;
+  right: 0;
+  top: 14px;
+  border-bottom-left-radius: 30px;
+  border-radius: 100%;
+}
+.polar-bear .head .ear {
+  height: 15px;
+  width: 15px;
+  border-top: 2.5px solid #444;
+  border-left: 2.5px solid #444;
+  border-bottom: 2.5px solid #444;
+  border-right: 2.5px solid #ffffff;
+  border-radius: 100%;
+  right: 70px;
+  top: 2px;
+  -webkit-transform: rotate(20deg);
+}
+.polar-bear .back-left-leg,
+.polar-bear .back-right-leg,
+.polar-bear .front-left-leg,
+.polar-bear .front-right-leg {
+  border-radius: 0 0 7px 7px;
+  width: 40px;
+}
+.polar-bear .back-left-leg,
+.polar-bear .front-left-leg {
+  background: #f8f8f8;
+}
+.polar-bear .back-right-leg,
+.polar-bear .front-right-leg {
+  background: #ffffff;
+}
+.polar-bear .back-left-leg,
+.polar-bear .back-right-leg {
+  height: 50px;
+}
+.polar-bear .front-left-leg,
+.polar-bear .front-right-leg {
+  height: 70px;
+}
+.polar-bear .back-right-leg {
+  top: 100px;
+  left: 0;
+}
+.polar-bear .back-left-leg {
+  top: 89px;
+  left: 33px;
+  z-index: -1;
+}
+.polar-bear .front-right-leg {
+  top: 80px;
+  left: 120px;
+}
+.polar-bear .front-left-leg {
+  top: 69px;
+  left: 153px;
+  z-index: -1;
+}
+.polar-bear .tail {
+  height: 38px;
+  width: 38px;
+  background: #f8f8f8;
+  z-index: -1;
+  border-radius: 100%;
+  left: -5px;
+  top: 2px;
+}
+
+@-webkit-keyframes scarf-trail-2 {
+  0% {
+    transform: rotate(-20deg);
+  }
+  20% {
+    transform: rotate(-30deg);
+  }
+  50% {
+    transform: rotate(-21deg);
+  }
+  80% {
+    transform: rotate(-29deg);
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+
+@keyframes scarf-trail-2 {
+  0% {
+    transform: rotate(-20deg);
+  }
+  20% {
+    transform: rotate(-30deg);
+  }
+  50% {
+    transform: rotate(-21deg);
+  }
+  80% {
+    transform: rotate(-29deg);
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+@-webkit-keyframes scarf-trail-1 {
+  0% {
+    transform: rotate(-20deg);
+  }
+  25% {
+    transform: rotate(-29deg);
+  }
+  50% {
+    transform: rotate(-22deg);
+  }
+  75% {
+    transform: rotate(-31deg);
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+@keyframes scarf-trail-1 {
+  0% {
+    transform: rotate(-20deg);
+  }
+  25% {
+    transform: rotate(-29deg);
+  }
+  50% {
+    transform: rotate(-22deg);
+  }
+  75% {
+    transform: rotate(-31deg);
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+
+.speech-bubble {
+  position: absolute;
+  background: #fff;
+  border-radius: 0.4em;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* 文字列を中央ぞろえにする */
+  left: 50%; /* 左端を中央に */
+  transform: translateX(-50%); /* 左端から中央に移動 */
+  white-space: nowrap; /* 横サイズを文字の長さに合わせる */
+}
+
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 80%;
+  border-width: 10px;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+  transform: translateX(-50%);
+}
+
+.speech-bubble span {
+  color: white; /* 文字色を赤に設定 */
+  left: 50%;
+  transform: translateX(-50%); /* 左端から中央に移動 */
+}
+
+body {
+  background-color: #7effffc0;
+}
+
+.hidden-until {
+  display: none;
+}
+
+.hidden-comment {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 90%;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap; /* 横サイズを文字の長さに合わせる */
+}
+
