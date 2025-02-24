@@ -281,6 +281,7 @@ POLAR BEAR
   left: 50%; /* 左端を中央に */
   transform: translateX(-50%); /* 左端から中央に移動 */
   white-space: nowrap; /* 横サイズを文字の長さに合わせる */
+  -webkit-transform: translateX(-50%); /* Safari用のベンダープレフィックス */
 }
 
 .speech-bubble:after {
@@ -296,7 +297,7 @@ POLAR BEAR
 }
 
 .speech-bubble span {
-  color: white; /* 文字色を赤に設定 */
+  color: white; /* 文字色を白に設定 */
   left: 50%;
   transform: translateX(-50%); /* 左端から中央に移動 */
   -webkit-transform: translateX(-50%); /* Safari用のベンダープレフィックス */
