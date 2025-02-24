@@ -280,7 +280,7 @@ POLAR BEAR
   text-align: center; /* 文字列を中央ぞろえにする */
   left: 50%; /* 左端を中央に */
   transform: translateX(-50%); /* 左端から中央に移動 */
-  white-space: pre-wrap; /* 改行を保持する */
+  white-space: nowrap; /* 横サイズを文字の長さに合わせる */
   -webkit-transform: translateX(-50%); /* Safari用のベンダープレフィックス */
 }
 
