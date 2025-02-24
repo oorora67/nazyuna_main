@@ -292,6 +292,7 @@ POLAR BEAR
   border-style: solid;
   border-color: #fff transparent transparent transparent;
   transform: translateX(-50%);
+  -webkit-transform: translateX(-50%); /* Safari用のベンダープレフィックス */
 }
 
 .speech-bubble span {
