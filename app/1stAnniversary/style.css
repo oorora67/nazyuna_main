@@ -284,13 +284,6 @@ POLAR BEAR
   font-family: 'Arial', sans-serif; /* フォントを指定 */
   line-height: 0.8; /* 行間を詰める */
 }
-/* iPad用のスタイル */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  .speech-bubble {
-    line-height: 1.2; /* iPad用の行間 */
-    max-width: 90%; /* 最大幅を設定 */
-  }
-}
 
 /* Safari用のスタイル */
 @supports (-webkit-touch-callout: none) {
