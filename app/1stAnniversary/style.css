@@ -282,17 +282,13 @@ POLAR BEAR
   transform: translateX(-50%); /* 左端から中央に移動 */
   white-space: pre; /* 改行タグを有効にする */
   font-family: 'Arial', sans-serif; /* フォントを指定 */
-  line-height: 1.1; /* 行間を詰める */
-  display: inline-block; /* 要素の幅を自動調整 */
-  max-width: 80%; /* 最大幅を設定 */
-  width: auto; /* 要素の幅を内容に基づいて自動調整 */
+  line-height: 0.8; /* 行間を詰める */
 }
 /* iPad用のスタイル */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   .speech-bubble {
     line-height: 1.2; /* iPad用の行間 */
     max-width: 90%; /* 最大幅を設定 */
-    width: auto; /* 要素の幅を内容に基づいて自動調整 */
   }
 }
 
