@@ -288,6 +288,16 @@ POLAR BEAR
 /* Safari用のスタイル */
 @supports (-webkit-touch-callout: none) {
   .speech-bubble {
+    position: absolute;
+    background: #fff;
+    border-radius: 0.4em;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* 文字列を中央ぞろえにする */
+    left: 50%; /* 左端を中央に */
+    transform: translateX(-50%); /* 左端から中央に移動 */
+    white-space: pre; /* 改行タグを有効にする */
+    font-family: 'Arial', sans-serif; /* フォントを指定 */
     line-height: 1.2; /* Safari用の行間 */
   }
 }
