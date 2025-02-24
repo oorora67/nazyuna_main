@@ -280,8 +280,9 @@ POLAR BEAR
   text-align: center; /* 文字列を中央ぞろえにする */
   left: 50%; /* 左端を中央に */
   transform: translateX(-50%); /* 左端から中央に移動 */
-  white-space: nowrap; /* 横サイズを文字の長さに合わせる */
+  white-space: pre-wrap; /* 改行タグを有効にする */
   -webkit-transform: translateX(-50%); /* Safari用のベンダープレフィックス */
+  font-family: 'Arial', sans-serif; /* フォントを指定 */
 }
 
 .speech-bubble:after {
@@ -301,10 +302,12 @@ POLAR BEAR
   left: 50%;
   transform: translateX(-50%); /* 左端から中央に移動 */
   -webkit-transform: translateX(-50%); /* Safari用のベンダープレフィックス */
+  font-family: 'Arial', sans-serif; /* フォントを指定 */
 }
 
 body {
   background-color: #7effffc0;
+  font-family: 'Arial', sans-serif; /* フォントを指定 */
 }
 
 .hidden-until {
