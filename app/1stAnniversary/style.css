@@ -298,6 +298,7 @@ POLAR BEAR
   color: white; /* 文字色を赤に設定 */
   left: 50%;
   transform: translateX(-50%); /* 左端から中央に移動 */
+  -webkit-transform: translateX(-50%); /* Safari用のベンダープレフィックス */
 }
 
 body {
